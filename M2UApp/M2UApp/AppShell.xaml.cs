@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace M2UApp
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShell : Shell
     {
         public AppShell()
         {
@@ -15,13 +15,22 @@ namespace M2UApp
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-
             
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            var action = await DisplayAlert("Sair", "Pretende Terminar a sessão?", "Sim", "Não");
+
+            if (action) 
+            { 
+
+            await Current.GoToAsync($"//{nameof(LoginPage)}");
+
+            }else
+            {
+
+            }
         }
     }
 }

@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="M2UApp.Views.SignUpPage"
+             Shell.FlyoutBehavior="Disabled"
              Title="Página de Registo">
     <ContentPage.Content>
-        <StackLayout Padding="20" VerticalOptions="Center">
+        <StackLayout Padding="20" VerticalOptions="Center" >
             <Entry x:Name="Emailentery" Placeholder="Email" Text="{Binding Email}" Keyboard="Email"
                  />
             <Entry x:Name="passwordentery" Placeholder="Password" Text="{Binding Password}" 
