@@ -58,31 +58,35 @@ namespace M2UApp.ViewModels
                 });
             }
         }
+
+        public Color BarTextColor { get; internal set; }
+        public Color BarBackgroundColor { get; internal set; }
+
         private async void SignUp()
         {
             var emailPattern = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
             var date = DateTime.Now;
 
             if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-                await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
-            else if (!String.IsNullOrWhiteSpace(email) && !(Regex.IsMatch(email, emailPattern)))
+                await Application.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
+            else if (!string.IsNullOrWhiteSpace(email) && !Regex.IsMatch(email, emailPattern))
             {
-                await App.Current.MainPage.DisplayAlert("Email Incorreto", "Por favor introduza um Email válido", "OK");
+                await Application.Current.MainPage.DisplayAlert("Email Incorreto", "Por favor introduza um Email válido", "OK");
             }
-            else
+            else  
             {
                 //call AddUser function which we define in Firebase helper class
                 var user = await FirebaseHelper.AddUser(Email, Password);
                 //AddUser return true if data insert successfuly 
                 if (user)
                 {
-                    await App.Current.MainPage.DisplayAlert("Registo Concluido", date.ToString(), "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Registo Concluido", date.ToString(), "Ok");
                     //Navigate to Wellcom page after successfuly SignUp
                     //pass user email to welcom page
                     await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
-                }
+                } 
                 else
-                    await App.Current.MainPage.DisplayAlert("Erro", "Registo Falhou", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Erro", "Registo Falhou", "OK");
 
             }
         }

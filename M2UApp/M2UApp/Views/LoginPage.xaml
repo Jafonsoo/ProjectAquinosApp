@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              mc:Ignorable="d"
              x:Class="M2UApp.Views.LoginPage"
+             Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="20" VerticalOptions="Center">
