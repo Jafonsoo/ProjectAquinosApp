@@ -154,4 +154,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\aquinos_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mobile_phone.png" />
+  </ItemGroup>
 </Project>

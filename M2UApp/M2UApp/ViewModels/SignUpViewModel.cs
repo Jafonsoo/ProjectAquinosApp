@@ -59,9 +59,6 @@ namespace M2UApp.ViewModels
             }
         }
 
-        public Color BarTextColor { get; internal set; }
-        public Color BarBackgroundColor { get; internal set; }
-
         private async void SignUp()
         {
             var emailPattern = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";

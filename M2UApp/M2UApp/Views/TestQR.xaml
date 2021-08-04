@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="M2UApp.Views.TestQR">
-    <ContentPage.Content>
+             x:Class="M2UApp.Views.TestQR"
+             Padding="0,20,0,0"
+             Title="QR Test">
+    
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="btnQrcode" Text="Ler QRCODE" />
+            <Label x:Name="lblResultado" Text="" HorizontalTextAlignment="Center" />
         </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>
