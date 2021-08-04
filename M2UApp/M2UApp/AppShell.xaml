@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:M2UApp.Views"
+       xmlns:controls="clr-namespace:M2UApp.Control"
        Title="M2UApp"
        x:Class="M2UApp.AppShell">
 
@@ -72,14 +73,16 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    
+
+    <Shell.FlyoutFooter>
+        <local:M2UFlyoutFooter />
+    </Shell.FlyoutFooter>
+
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </ShellItem>
 
-    <ShellItem Title="Página" Route="TEST" Icon="icon_about.png">
-        <ShellContent ContentTemplate="{DataTemplate local:TESTE}"  />
-    </ShellItem>
+
 
     <FlyoutItem Title="Página Inicial" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
@@ -92,6 +95,10 @@
     <FlyoutItem Title="Browse" Icon="icon_feed.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem >
+    
+    <ShellItem Title="Página" Route="TEST" Icon="icon_about.png">
+        <ShellContent ContentTemplate="{DataTemplate local:TESTE}"  />
+    </ShellItem>
         
     <FlyoutItem Title="Definições">
         <ShellContent Route="Definicoes" ContentTemplate="{DataTemplate local:Definicoes}" />
