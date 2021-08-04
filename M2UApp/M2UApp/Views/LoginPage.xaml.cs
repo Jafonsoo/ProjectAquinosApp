@@ -20,5 +20,10 @@ namespace M2UApp.Views
             InitializeComponent();
             BindingContext = loginViewModel;
         }
+
+        private void loginbtn_Clicked(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

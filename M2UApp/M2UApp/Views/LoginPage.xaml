@@ -17,6 +17,7 @@
                    IsPassword = "True"/>
             <Button x:Name= "loginbtn" Text = "Login " 
                     Command="{Binding LoginCommand}"
+                    Clicked="loginbtn_Clicked"
                     HorizontalOptions = "FillAndExpand"/>
             <Button x:Name="signup" Text="SignUp" Command="{Binding SignUp}" HorizontalOptions="End"/>
         </StackLayout>

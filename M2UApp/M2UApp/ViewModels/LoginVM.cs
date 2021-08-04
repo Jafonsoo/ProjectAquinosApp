@@ -68,9 +68,9 @@ namespace M2UApp.ViewModel
                 {
                 await  App.Current.MainPage.DisplayAlert("Login Conseguido", date.ToString(), "Ok");
 
+                        await Shell.Current.GoToAsync($"//AboutPage?entry={email}");
 
-                await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
-                }
+                    }
                 else
                 await  App.Current.MainPage.DisplayAlert("Login Falhou", "Email e Password estão incorretos", "OK");
                 else
