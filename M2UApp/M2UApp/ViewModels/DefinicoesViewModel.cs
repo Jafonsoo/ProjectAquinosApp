@@ -1,5 +1,4 @@
-﻿using M2ULogistic.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,81 +7,12 @@ using Xamarin.Forms;
 
 namespace M2UApp.ViewModels
 {
-    public class DefinicoesViewModel : INotifyPropertyChanged
+    public class DefinicoesViewModel 
     {
         public DefinicoesViewModel(string email)
         {
-            Email = email;
         }
 
-        private string email;
 
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-        private string password;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string Password
-        {
-            get { return password; }
-            set
-            {
-                password = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Password"));
-            }
-        }
-        public Command UpdateCommand
-        {
-            get { return new Command(Update); }
-        }
-
-        public Command DeleteCommand
-        {
-            get { return new Command(Delete); }
-        }
-
-        //Update user data
-        private async void Update()
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(Password))
-                {
-                    var isupdate = await FirebaseHelper.UpdateUser(Email, Password);
-                    if (isupdate)
-                        await App.Current.MainPage.DisplayAlert("Update Success", "", "Ok");
-                    else
-                        await App.Current.MainPage.DisplayAlert("Error", "Record not update", "Ok");
-                }
-                else
-                    await App.Current.MainPage.DisplayAlert("Password Require", "Please Enter your password", "Ok");
-            }
-            catch (Exception e)
-            {
-
-                Debug.WriteLine($"Error:{e}");
-            }
-        }
-        //Delete user data
-        private async void Delete()
-        {
-            try
-            {
-                var isdelete = await FirebaseHelper.DeleteUser(Email);
-                if (isdelete)
-                    await App.Current.MainPage.Navigation.PopAsync();
-                else
-                    await App.Current.MainPage.DisplayAlert("Error", "Record not delete", "Ok");
-            }
-            catch (Exception e)
-            {
-
-                Debug.WriteLine($"Error:{e}");
-            }
-        }
     }
 }

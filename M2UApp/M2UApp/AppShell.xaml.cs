@@ -1,7 +1,6 @@
 ﻿
 using M2UApp.ViewModels;
 using M2UApp.Views;
-using M2ULogistic.ViewModel;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -34,7 +33,7 @@ namespace M2UApp
 
             if (action)
             {
-                await Current.GoToAsync($"//{nameof(LoginPage)}");
+                await Shell.Current.GoToAsync($"//LoginPage");
             }
             else { }
         }
