@@ -19,7 +19,7 @@
                     Command="{Binding LoginCommand}"
                     Clicked="loginbtn_Clicked"
                     HorizontalOptions = "FillAndExpand"/>
-            <Button x:Name="signup" Text="SignUp" Command="{Binding SignUp}" HorizontalOptions="End"/>
+       <!--     <Button x:Name="signup" Text="SignUp" Command="{Binding SignUp}" HorizontalOptions="End"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

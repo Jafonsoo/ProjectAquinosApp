@@ -1,9 +1,14 @@
-﻿using M2UApp.Views;
-using M2ULogistic.ViewModel;
+﻿using LiteDB;
+using M2UApp.Helpers;
+using M2UApp.Models;
+using M2UApp.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -36,11 +41,11 @@ namespace M2UApp.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs("Password"));
             }
         }
-        public Command LoginCommand
+     /*   public Command LoginCommand
         {
             get
             {
-               return new Command(Login);
+               return new Command();
             }
         }
         public Command SignUp
@@ -49,9 +54,11 @@ namespace M2UApp.ViewModel
             {
                 return new Command(()=> { App.Current.MainPage.Navigation.PushAsync(new SignUpPage()); });
             }
-        }
+        }*/
 
-       private async void Login()
+
+
+     /*   private async void Login()
         {
             var date = DateTime.Now;
 
@@ -60,15 +67,14 @@ namespace M2UApp.ViewModel
             else
             {
 
-                var user = await FirebaseHelper.GetUser(Email);
+            //    var user = await FirebaseHelper.GetUser(Email);
 
 
                 if(user!=null)
                 if (Email == user.Email && Password == user.Password)
                 {
-                await  App.Current.MainPage.DisplayAlert("Login Conseguido", date.ToString(), "Ok");
 
-                        await Shell.Current.GoToAsync($"//AboutPage?entry={email}");
+                        await Shell.Current.GoToAsync($"//AboutPage");
 
                     }
                 else
@@ -76,6 +82,6 @@ namespace M2UApp.ViewModel
                 else
                     await App.Current.MainPage.DisplayAlert("Login Falhou", "Utilizador não encontrado", "OK");
             }
-        }
+        }*/
     }
 }

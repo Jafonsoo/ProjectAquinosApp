@@ -1,8 +1,10 @@
-﻿using M2UApp.ViewModel;
-using M2UApp.ViewModels;
+﻿using LiteDB;
+using M2UApp.Helpers;
+using M2UApp.Models;
+using M2UApp.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,17 +15,101 @@ namespace M2UApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        LoginVM loginViewModel;
+      //  LoginVM loginViewModel;
+
         public LoginPage()
         {
-            loginViewModel = new LoginVM();
+
+         //   loginViewModel = new LoginVM();
             InitializeComponent();
-            BindingContext = loginViewModel;
+          //  BindingContext = loginViewModel;
+            //    InitializeAsync();
+
+
+            /*  if(Settings.Login.Length > 0)
+              {
+                  Email.Text = Settings.Login;
+              }*/
         }
 
-        private void loginbtn_Clicked(object sender, EventArgs e)
+        public static byte[] GetHash(string inputString)
         {
-            
+            using (HashAlgorithm algorithm = SHA256.Create())
+                return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
         }
+
+
+        public static string GetHashString(string inputString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
+        }
+
+        public async Task RefreshDataAsync(string user, string pass)
+        {
+
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("http://150.1.101.6:7000/api/login/login?user=" + user + "&password=" + GetHashString(pass));
+            HttpResponseMessage response = await client.GetAsync(uri);
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var Valido = JsonSerializer.Deserialize(content);
+
+                if (Valido)
+                {
+                    await Shell.Current.GoToAsync($"//AboutPage");
+                }  else
+                {
+                    await App.Current.MainPage.DisplayAlert("Login Falhou", "Email / Password estão incorretos", "OK");
+                }
+            }
+        }
+
+        private async void loginbtn_Clicked(object sender, EventArgs e)
+        {
+
+            if(!string.IsNullOrEmpty(Email.Text) && !string.IsNullOrEmpty(Password.Text))
+            {
+                    await RefreshDataAsync(Email.Text, Password.Text);
+
+            } else
+            {
+                    await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
+            }
+            
+
+            // Settings.Login = Email.Text;
+            //  LiteCollection<UserLocal> lite = db.GetCollection<UserLocal>;
+            /*    int iduser = UserLocals.Count() == 0 ? 1 : (int)(UserLocals.Max(x => x.id) + 1);
+
+                UserLocal userLocal = new UserLocal
+                {
+                    id = iduser,
+                    Email = Email.Text,
+                };*/
+            //       UserLocals.Insert(userLocal);
+
+        }
+
+        /*  private void Insert(object sender, EventArgs e)
+          {
+              int iduser = UserLocals.Count() == 0 ? 1 : (int)(UserLocals.Max(x => x.id) + 1);
+
+              UserLocal userLocal = new UserLocal
+              {
+                  id = iduser,
+                  Email = Email.Text,
+              };
+
+              UserLocals.Insert(userLocal);
+
+          }*/
     }
 }
