@@ -73,15 +73,23 @@
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
 
+
+
     <Shell.FlyoutFooter>
         <local:M2UFlyoutFooter />
     </Shell.FlyoutFooter>
+
+ <!--   <ShellItem Route="loading" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:LoadingPage}" />
+    </ShellItem>-->
 
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </ShellItem>
 
-
+    <ShellItem Route="ArmazensPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:ArmazensPage}" />
+    </ShellItem>
 
     <FlyoutItem Title="Página Inicial" Icon="icon_about.png" >
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />

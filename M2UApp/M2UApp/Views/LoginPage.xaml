@@ -9,17 +9,17 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="20" VerticalOptions="Center">
-            <Entry x:Name = "Email" Placeholder = "Email" Text="{Binding Email}"
+            <Entry x:Name = "Username" Placeholder = "Username"
+                   Text="{Binding Username}"
                    HeightRequest = "40"
                    Keyboard = "Email"/>
-            <Entry x:Name = "Password" Text="{Binding Password}" Placeholder = "Password"
+            <Entry x:Name = "Password" Placeholder = "Password"
+                   Text="{Binding Password}"
                    HeightRequest = "40"
                    IsPassword = "True"/>
             <Button x:Name= "loginbtn" Text = "Login " 
-                    Command="{Binding LoginCommand}"
                     Clicked="loginbtn_Clicked"
                     HorizontalOptions = "FillAndExpand"/>
-       <!--     <Button x:Name="signup" Text="SignUp" Command="{Binding SignUp}" HorizontalOptions="End"/>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
