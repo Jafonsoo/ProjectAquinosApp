@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.InternosPage"
+             Title="Internos">
+
+    <ScrollView>
+        <StackLayout Padding="40" VerticalOptions="StartAndExpand">
+            <Frame OutlineColor="#E31E24"
+                               Padding="40" >
+                <StackLayout Orientation="Horizontal" Spacing="20" VerticalOptions="StartAndExpand" >
+                    <Image Source="transport.png"
+                                         WidthRequest="50"
+                                         HeightRequest="50" />
+                    <StackLayout>
+                        <Label Text="Contagem"
+                                           FontSize="Medium"
+                                           VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Contagem"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Frame>
+
+            <Frame OutlineColor="#E31E24"
+                   Padding="40" 
+                   TranslationY="20">
+                <StackLayout Orientation="Horizontal" Spacing="20">
+                    <Image Source="truck.png"
+                                         WidthRequest="50"
+                                         HeightRequest="50" />
+                    <StackLayout>
+                        <Label Text="Rec. de Trsf. de Armazém"
+                                           FontSize="Medium"
+                                           VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Rec"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Frame>
+
+            <Frame OutlineColor="#E31E24"
+                   Padding="40" 
+                   
+                   TranslationY="40">
+                <StackLayout Orientation="Horizontal" Spacing="20">
+                    <Image Source="truck.png"
+                                         WidthRequest="50"
+                                         HeightRequest="50" />
+                    <StackLayout>
+                        <Label Text="Trsf. de Armazém"
+                                           FontSize="Medium"
+                                           VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Trsf"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

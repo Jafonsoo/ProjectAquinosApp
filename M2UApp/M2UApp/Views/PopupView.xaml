@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"          
+             x:Class="M2UApp.Views.PopupView">
+    <StackLayout Margin="18"
+                 Padding="36"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 BackgroundColor="White" 
+                 HeightRequest="250"
+                 WidthRequest="300">
+        
+        <Label Text="Digitar código do artigo" HorizontalOptions="Start"
+                 VerticalOptions="Start"/>
+        
+        <StackLayout Orientation="Horizontal" >
+        <RadioButton Content="Referência" />
+        <RadioButton Content="Código de barras" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="codigo"
+                   HeightRequest="40"
+                   WidthRequest="250"
+                   PlaceholderColor="DarkGray"/>
+            
+            <Image Source="mais.png" Scale="0.5"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+        <Label Text="Pesquisar artigo" HorizontalOptions="Start"
+                 VerticalOptions="Start"/>
+        
+         <StackLayout Orientation="Horizontal">
+            <Entry x:Name="P_artigo"
+                   HeightRequest="40"
+                   WidthRequest="250"
+                   PlaceholderColor="DarkGray"/>
+
+            <Image Source="mais.png" Scale="0.5" />
+
+        </StackLayout>
+
+        <Button x:Name= "adicionabtn" Text = "Adicionar conteúdo de um contentor " 
+                    HorizontalOptions = "FillAndExpand"/>
+    </StackLayout>
+</pages:PopupPage>

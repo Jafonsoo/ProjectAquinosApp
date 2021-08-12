@@ -27,11 +27,6 @@ namespace M2UApp
 
         }
 
-        private void InitializeDi()
-        {
-
-        }
-
         protected override void OnStart()
         {
         }

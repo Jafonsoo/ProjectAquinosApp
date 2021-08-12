@@ -33,7 +33,7 @@
                 <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
                 <Label x:Name="textLabel" 
                    Text="test" 
-                   Margin="10" IsVisible="false"/>
+                   Margin="10"/>
                 <Label FontSize="16" Padding="0,24,0,0">
                     <Label.FormattedText>
                         <FormattedString>

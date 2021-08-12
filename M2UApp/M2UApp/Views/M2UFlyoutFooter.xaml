@@ -8,6 +8,11 @@
                TextColor="Black"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
+        <Label x:Name="armazem"
+               Text="Armazem"
+               TextColor="Black"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
         <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
                TextColor="Black"
                HorizontalOptions="Center" />

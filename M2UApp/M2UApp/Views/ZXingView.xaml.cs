@@ -18,7 +18,7 @@ namespace M2UApp.Views
         ZXingDefaultOverlay overlay;
         public event EventHandler<string> BarcodeReaded;
 
-        public ZXingView()
+        public ZXingView(string TopText, string BottomText)
         {
             InitializeComponent();
 
@@ -30,7 +30,8 @@ namespace M2UApp.Views
                 TryHarder = true,
                 PossibleFormats = new List<ZXing.BarcodeFormat>
                 {
-                    ZXing.BarcodeFormat.QR_CODE//ZXing.BarcodeFormat.EAN_8, ZXing.BarcodeFormat.EAN_13
+                    ZXing.BarcodeFormat.QR_CODE
+                    
                 }
             };
 
@@ -57,8 +58,8 @@ namespace M2UApp.Views
 
             overlay = new ZXingDefaultOverlay
             {
-                TopText = "Escolha um QRCode para leitura",
-                BottomText = "O Código sera lido automaticamente",
+                TopText = TopText,
+                BottomText = BottomText,
                 ShowFlashButton = zxing.HasTorch, //Lanterna
             };
 

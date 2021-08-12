@@ -10,10 +10,12 @@
     <ContentPage.Content>
         <StackLayout Padding="20" VerticalOptions="Center">
             <Entry x:Name = "Username" Placeholder = "Username"
+                   PlaceholderColor="DarkGray"
                    Text="{Binding Username}"
                    HeightRequest = "40"
                    Keyboard = "Email"/>
             <Entry x:Name = "Password" Placeholder = "Password"
+                   PlaceholderColor="DarkGray"
                    Text="{Binding Password}"
                    HeightRequest = "40"
                    IsPassword = "True"/>
