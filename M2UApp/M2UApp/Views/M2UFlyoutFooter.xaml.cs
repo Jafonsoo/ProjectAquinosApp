@@ -8,6 +8,7 @@ namespace M2UApp.Views
         public M2UFlyoutFooter()
         {
             InitializeComponent();
+
         }
     }
 }

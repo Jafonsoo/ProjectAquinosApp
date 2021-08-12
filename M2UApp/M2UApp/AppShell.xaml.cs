@@ -17,9 +17,12 @@ namespace M2UApp
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(TestQR), typeof(TestQR));
             Routing.RegisterRoute(nameof(Definicoes), typeof(Definicoes));
-            Routing.RegisterRoute(nameof(TESTE), typeof(TESTE));
+            Routing.RegisterRoute(nameof(ExpedicaoPage), typeof(ExpedicaoPage));
             Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
             Routing.RegisterRoute(nameof(ArmazensPage), typeof(ArmazensPage));
+            Routing.RegisterRoute(nameof(InternosPage), typeof(InternosPage));
+            Routing.RegisterRoute(nameof(PreparacaoPage), typeof(PreparacaoPage));
+            Routing.RegisterRoute(nameof(TabbedPrep), typeof(TabbedPrep));
 
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
@@ -39,6 +42,15 @@ namespace M2UApp
             else { }
         }
 
+        private async void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            bool action = await DisplayAlert("", "Pretende alterar o armazem?", "Sim", "Não");
 
+            if (action)
+            {
+                await Shell.Current.GoToAsync($"//ArmazensPage");
+            }
+            else { }
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace M2UApp.Views
             btnQrcode.Clicked += async (sender, e) =>
             {
 
-                ZXingView zXingView = new ZXingView();
+                ZXingView zXingView = new ZXingView("Escolha um QRCode para leitura", "O Código sera lido automaticamente");
                 zXingView.BarcodeReaded += ZXingView_BarcodeReaded;
-
+                
                 await Navigation.PushModalAsync(zXingView);
             };
 
