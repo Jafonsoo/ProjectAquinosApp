@@ -19,6 +19,12 @@ namespace M2UApp.Views
         }
 
 
+        public void ListElementos(IEnumerable<Artigo> artigos)
+        {
+            ListArtigos.ItemsSource = artigos;
+
+        }
+
 
     }
 }

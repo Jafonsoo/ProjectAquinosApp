@@ -17,10 +17,10 @@ namespace M2UApp.Views
     public partial class ListArtigosPreparacao : ContentPage
     {
         public List<Artigo> artigos;
+        public List<Artigo> artigosOriginal;
         public int numero_encomenda;
         public Artigo artigo;
         public string nome_artigo;
-        public int i;
 
         public ListArtigosPreparacao()
         {
@@ -68,7 +68,13 @@ namespace M2UApp.Views
             PopupEncomendas popupEncomendas = new PopupEncomendas();
             popupEncomendas.EncomendaReaded += List;
             await Navigation.PushPopupAsync(popupEncomendas);
-        }*/
+        }*/        
+        
+        private void Select_Clicked(object sender, EventArgs e)
+        {
+            EnviarArtigos(sender, artigos);
+        }
+
         private async void List(object sender, int e)
         {
             numero_encomenda = e;
@@ -91,11 +97,27 @@ namespace M2UApp.Views
             }
             return artigos;
         }
+         
+        public async Task<List<Artigo>> RefreshDataAsyncOriginal(int numero_encomenda)
+        {
+            artigosOriginal = new List<Artigo>();
+            HttpClient client = new HttpClient();
+            Uri uri = new Uri("http://150.1.101.6:7000/api/encomendas/artigos?numero_encomenda=" + numero_encomenda);
+            HttpResponseMessage responseMessage = await client.GetAsync(uri);
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                string context = await responseMessage.Content.ReadAsStringAsync();
+                var artigo = JsonConvert.DeserializeObject<List<Artigo>>(context);
+
+                artigosOriginal = new List<Artigo>(artigo);
+            }
+            return artigosOriginal;
+        }
 
         public async void ReceberCodigo(object sender, string e)
         {
             nome_artigo = e;
-            numero_encomenda = i;
             if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 1)
             {
                 Artigo aa = artigos.FirstOrDefault(f => f.Id == artigos.Where(x => x.Referencia_Artigo.Contains(e)).Select(x => x.Id).FirstOrDefault());
@@ -114,19 +136,18 @@ namespace M2UApp.Views
 
                 ListArtigos.ItemsSource = new List<Artigo>(artigos);
 
-                await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo "  + nome_artigo + " adicionado" , "OK");//Duvida tirar ou nao
+                await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo "  + nome_artigo + " adicionado" , "OK");
                 
                 if(artigos.Sum(x => x.QuantidadePicado) == 4)
                 {
                     foreach(Artigo artigo in artigos)
                     {
-                    await Application.Current.MainPage.DisplayAlert("Erro", "ENVIAR "+ artigo.Quantidade , "OK");
+                    await Application.Current.MainPage.DisplayAlert("Erro", "ENVIAR "+ artigo.QuantidadePicado , "OK");
 
                     }
                 }
             } else if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 0)
             {
-             //   artigos = new List<Artigo>();
                 artigos.Add(new Artigo()
                 {
                     Id = artigos.Count() + 1,
@@ -136,12 +157,37 @@ namespace M2UApp.Views
                 });
 
                 ListArtigos.ItemsSource = new List<Artigo>(artigos);
+
+                await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo " + nome_artigo + " adicionado", "OK");
             }
             else
             {
             await Application.Current.MainPage.DisplayAlert("Erro", "Erro Qr Code", "OK");
             }
         }
+
+        public async void EnviarArtigos(object sender, List<Artigo> artigos)
+        {
+                 artigosOriginal = await RefreshDataAsyncOriginal(numero_encomenda);
+            //  List<Artigo> list3 = artigosOriginal.Where(x => x.Referencia_Artigo.Contains(artigos)).ToList();
+            //   var list3 = artigos.Where(x => artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo)
+            // && !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo));
+            IEnumerable<Artigo> list3 = artigos.Where(x => !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo));
+
+        //    foreach (Artigo artigo in list3)
+      //     && !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo)))
+        //    {
+                //await Application.Current.MainPage.DisplayAlert("ole", "jasj" + artigo.Referencia_Artigo, "ok");
+            /*    PopupArtigos popup = new PopupArtigos();
+                popup.ListElementos(list3);
+                await Navigation.PushPopupAsync(popup);*/
+
+                    string aa= string.Concat(list3.Select(x=> x.Referencia_Artigo + "#" + x.QuantidadePicado + "#"));
+            await Application.Current.MainPage.DisplayAlert("ole", "jasj" + aa, "ok");
+
+            //   }
+
+        } 
 
         public async void RemoverCodigo(object sender, string e)
         {
@@ -150,9 +196,11 @@ namespace M2UApp.Views
 
                 Artigo xx = artigos.Where(x => x.Referencia_Artigo.Contains(e)).FirstOrDefault();
 
-                if (xx != null && xx.QuantidadePicado > 1)
+                if ((xx != null && xx.QuantidadePicado > 1) || (xx.QuantidadePicado == 1 && xx.Quantidade > 1))
                 {
                     xx.QuantidadePicado--;
+
+                    ListArtigos.ItemsSource = new List<Artigo>(artigos);
 
                     await Application.Current.MainPage.DisplayAlert("Sucesso", "Quantidade " + e + " removida", "OK");
                 }
@@ -160,24 +208,19 @@ namespace M2UApp.Views
                 {
                     artigos.Remove(xx);
 
+                    ListArtigos.ItemsSource = new List<Artigo>(artigos);
+
                     await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo " + e + " removido", "OK");
                 }
-
-                ListArtigos.ItemsSource = new List<Artigo>(artigos);
             }
-
         }
 
         public void NumeroSerie(object sender, string e)
         {
-            artigos = new List<Artigo>();
-
             artigos.Add(new Artigo()
             {
                 NumeroSerie = e
             });
-            
-            
         } 
 
         void Adicionar_BarcodeReaded(object sender, string e)
@@ -208,6 +251,5 @@ namespace M2UApp.Views
 
             RemoverCodigo(sender, combindedString);
         }
-
     }
 }

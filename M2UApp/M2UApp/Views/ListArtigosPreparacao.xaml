@@ -19,10 +19,11 @@
                  Clicked="Adicionar_Objeto_Clicked"/>
         <ToolbarItem 
                  x:Name="Select"
-                 Text="Selecionar"
+                 Text="Enviar Carga"
                  IconImageSource="selecionado.png"
                  Order="Primary"
-                 Priority="0"/>
+                 Priority="0"
+                 Clicked="Select_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
@@ -38,9 +39,9 @@
                                    LineBreakMode="TailTruncation" 
                                    VerticalOptions="CenterAndExpand"
                                    VerticalTextAlignment="Center"/>
-                      <!--     <Label Text="{Binding QuantidadePicado}" HorizontalOptions="End" VerticalOptions="Center"/>
-                            <Label Text="/" HorizontalOptions="End" VerticalOptions="Center"/>-->
+
                             <Label Text="{Binding QuantidadeQuantidadePicado}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                        
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="0"/>
                             </StackLayout.GestureRecognizers>
