@@ -14,9 +14,26 @@
                  Order="Primary"
                  Priority="0"               
                  Clicked="Select_Clicked"/>
-    </ContentPage.ToolbarItems> 
+    </ContentPage.ToolbarItems>
 
-    <StackLayout Margin="20" >
+
+    <StackLayout>
+
+        <SearchBar 
+            x:Name="Search"
+            TextChanged="Search_TextChanged"
+            Placeholder="Pesquisar Armazem"
+            CancelButtonColor="Black"
+            PlaceholderColor="Black"
+            TextColor="Black"
+            TextTransform="Lowercase"
+            HorizontalTextAlignment="Center"
+            FontSize="Medium"
+            FontAttributes="Italic" 
+            />
+
+        <StackLayout Margin="20,0,20,20">
+
         <ListView x:Name="ListArmazens" RowHeight="60" 
                   SelectionMode="Single" 
                   ItemSelected="ListArmazens_ItemSelected">
@@ -24,14 +41,18 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Vertical" Padding="8,0,8,0">
-                            <Label Text="{Binding nomeArmazem}" 
+                                <Label Text="{Binding NomeArmazem}" 
                                    TextColor="Black"                                               
                                    FontSize="18" 
-                                   LineBreakMode="TailTruncation" />
-                        </StackLayout>
+                                   LineBreakMode="TailTruncation" 
+                                   VerticalOptions="CenterAndExpand"
+                                    VerticalTextAlignment="Center"/>
+                            </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
+        
     </StackLayout>
 </ContentPage>

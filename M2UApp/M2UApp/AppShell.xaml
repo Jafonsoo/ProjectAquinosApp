@@ -74,6 +74,9 @@
     -->
 
 
+    <Shell.FlyoutHeader>
+        <local:M2UFlyoutHeader/>
+    </Shell.FlyoutHeader>
 
     <Shell.FlyoutFooter>
         <local:M2UFlyoutFooter />

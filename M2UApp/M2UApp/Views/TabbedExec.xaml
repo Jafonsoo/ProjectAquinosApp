@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.TabbedExec"
              xmlns:views="clr-namespace:M2UApp.Views"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              android:TabbedPage.ToolbarPlacement="Bottom" 
-             x:Class="M2UApp.Views.TabbedPrep"
              BackgroundColor="{StaticResource Secundary}"
-             BarTextColor="White"
+             BarTextColor="White"      
              SelectedTabColor="White"
              UnselectedTabColor="Black" 
-             Title="Preparação de Carga"
+             Title="Execução de Carga"
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="True">
+
     <TabbedPage.ToolbarItems>
-<!--
+
         <ToolbarItem 
                  x:Name="Subtrair_leitura"
                  Text="Subtrair leitura"
@@ -25,24 +26,22 @@
                  x:Name="Adicionar_Objeto"
                  Text="Adicionar Objeto"
                  IconImageSource="mais.png"
-                 Clicked="Adicionar_Objeto_Clicked" />-->
+                 Clicked="Adicionar_Objeto_Clicked" />
 
         <ToolbarItem 
                  x:Name="Estado_tarefa"
-                 Text="Adicionar Carga"
-                 IconImageSource="mais.png"
+                 Text="Estado tarefa"
+                 IconImageSource="bandeira.png"
                  Order="Primary"
-                 Clicked="Estado_tarefa_Clicked"
             />
-        
-    </TabbedPage.ToolbarItems>
 
+    </TabbedPage.ToolbarItems>
 
     <TabbedPage.Children>
 
-        <views:AdicionarPreCarga Title="Home Carga" IconImageSource="casa.png" />
-    <!--<views:ListArtigosPreparacao Title="Lista Carga" IconImageSource="lista.png"/>-->
-
+        <views:AdicionarExecCarga Title="Home Carga" IconImageSource="casa.png" />
+        <views:AboutPage Title="Lista Carga" IconImageSource="lista.png"/>
+        
     </TabbedPage.Children>
 
 </TabbedPage>

@@ -10,4 +10,4 @@
             <Label x:Name="lblResultado" Text="" HorizontalTextAlignment="Center" />
         </StackLayout>
     
-</ContentPage>
+</ContentPage> 

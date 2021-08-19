@@ -17,7 +17,7 @@ namespace M2UApp.Views
     public partial class ArmazensPage : ContentPage
     {
         public List<Armazens> armazens;
-        public Armazens armazens2;
+        public Armazens armazens2; 
 
         public ArmazensPage()
         {
@@ -29,7 +29,7 @@ namespace M2UApp.Views
             base.OnAppearing();
             
             ListArmazens.ItemsSource = await RefreshDataAsync();
-
+            
         }
 
         public async Task<List<Armazens>> RefreshDataAsync()
@@ -54,12 +54,16 @@ namespace M2UApp.Views
             if(armazens2 != null) {
 
                 //  App.Current.MainPage.DisplayAlert("Valido", "selecionado", "OK");
-                bool action = await DisplayAlert("", "Deseja selecionar o armazem " + armazens2.nomeArmazem, "Sim", "Não");
+                bool action = await DisplayAlert("", "Deseja selecionar o armazem " + armazens2.NomeArmazem, "Sim", "Não");
 
                 if (action)
                 {
-                Application.Current.Properties["ArmazemAtual"] = armazens2.nomeArmazem;
+
+                Application.Current.Properties["IdArmazem"] = armazens2.Id;
+                Application.Current.Properties["ArmazemAtual"] = armazens2.NomeArmazem;
+
                 await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+
                 }
                 else 
                 {}
@@ -88,13 +92,27 @@ namespace M2UApp.Views
 
         private void ListArmazens_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var armazens = e.SelectedItem as Armazens;
-            if (armazens != null)
+            var armazensSelecionado = e.SelectedItem as Armazens;
+
+            if (armazensSelecionado != null )
             {
-                armazens2 = armazens;
-                                
+                armazens2 = armazensSelecionado;
+
             }
         }
 
+         void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var keyword = Search.Text;
+            /*     var sugestao = armazens.Where(c => c.nomeArmazem.ToLower().Contains(keyword.ToLower()));
+                 ListArmazens.ItemsSource = sugestao;*/
+            var newTextValue = Search.Text?.ToLower() ?? "";
+
+
+            ListArmazens.ItemsSource = armazens.Where(f => f.NomeArmazem.ToLowerInvariant().Contains(newTextValue)).ToList();
+
+            
+
+        }
     }
 }

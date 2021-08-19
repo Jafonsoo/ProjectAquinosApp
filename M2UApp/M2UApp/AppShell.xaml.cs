@@ -22,7 +22,10 @@ namespace M2UApp
             Routing.RegisterRoute(nameof(ArmazensPage), typeof(ArmazensPage));
             Routing.RegisterRoute(nameof(InternosPage), typeof(InternosPage));
             Routing.RegisterRoute(nameof(PreparacaoPage), typeof(PreparacaoPage));
+            Routing.RegisterRoute(nameof(ExecucaoPage), typeof(ExecucaoPage));
             Routing.RegisterRoute(nameof(TabbedPrep), typeof(TabbedPrep));
+            Routing.RegisterRoute(nameof(TabbedExec), typeof(TabbedExec));
+            Routing.RegisterRoute(nameof(ListArtigosPreparacao), typeof(ListArtigosPreparacao));
 
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
