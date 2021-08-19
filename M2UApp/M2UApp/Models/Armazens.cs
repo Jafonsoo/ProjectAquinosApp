@@ -6,8 +6,8 @@ namespace M2UApp.Models
 {
     public class Armazens
     {
-        public int id { get; set; }
-        public string nomeArmazem { get; set; }
+        public int Id { get; set; }
+        public string NomeArmazem { get; set; }
 
     }
 }

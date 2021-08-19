@@ -11,22 +11,34 @@ using Xamarin.Forms.Xaml;
 namespace M2UApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AdicionarPreCarga : ContentPage
+    public partial class AdicionarExecCarga : ContentPage
     {
-        public AdicionarPreCarga()
+
+
+        public AdicionarExecCarga()
         {
             InitializeComponent();
             NomeArmazem.Text = (string)Application.Current.Properties["ArmazemAtual"];
+
+          //  MyString = Cais;
+
+
+
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushPopupAsync(new PopupEncomendas());
+            PopupCais popupCais = new PopupCais();
+            popupCais.CaisReaded += CaisResult;
+
+
+            await Navigation.PushPopupAsync(popupCais);
         }
 
-        private async void Button_Clicked_1(object sender, EventArgs e)
+        void CaisResult(object sender, string e)
         {
-            await Shell.Current.GoToAsync(nameof(ListArtigosPreparacao));
+            nomeCais.Text = e;
         }
     }
 }

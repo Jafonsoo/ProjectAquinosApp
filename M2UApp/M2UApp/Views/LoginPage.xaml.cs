@@ -1,5 +1,6 @@
 ﻿using LiteDB;
 using M2UApp.ViewModel;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -69,19 +70,22 @@ namespace M2UApp.Views
                   }
               }
 
-        private async void loginbtn_Clicked(object sender, EventArgs e)
-        {
-
-            if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Password.Text))
+            private async void loginbtn_Clicked(object sender, EventArgs e)
             {
-                await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
+
+                if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Password.Text))
+                {
+                    await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
 
 
-            }
-            else
-            {
-                await RefreshDataAsync(Username.Text,Password.Text);
-            }
+                }
+                else
+                {
+                    await RefreshDataAsync(Username.Text,Password.Text);
+                }
+
+            
+
         }
             
 

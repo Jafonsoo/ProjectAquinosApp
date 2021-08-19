@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             x:Class="M2UApp.Views.PopupArtigos">
+    <StackLayout Padding="20"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 BackgroundColor="White" 
+                 HeightRequest="600"
+                 WidthRequest="300">
+        
+        <Label Text="Lista de Artigos"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+
+        <StackLayout>
+            <ListView x:Name="ListArtigos" RowHeight="60"
+                      SelectionMode="Single">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                                <Label Text="{Binding Referencia_Artigo}"
+                                       TextColor="Black"                                               
+                                       FontSize="18" 
+                                       LineBreakMode="TailTruncation" 
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="CenterAndExpand"
+                                       VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding Quantidade}"
+                                       TextColor="LightGray"                                               
+                                       FontSize="14" 
+                                       LineBreakMode="TailTruncation" 
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="CenterAndExpand"
+                                       VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>

@@ -33,9 +33,9 @@ namespace M2UApp.Views
             await Shell.Current.GoToAsync(nameof(PreparacaoPage));
         }
 
-        private void TapGestureRecognizer_Execucao(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Execucao(object sender, EventArgs e)
         {
-            App.Current.MainPage.DisplayAlert("Erro", "Ex de carga", "OK");
+            await Shell.Current.GoToAsync(nameof(ExecucaoPage));
         }
     }
 }

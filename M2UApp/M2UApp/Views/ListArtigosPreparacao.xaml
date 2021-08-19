@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="M2UApp.Views.ListArtigosPreparacao"
+             Title="Preparação de Carga"
+             Shell.NavBarIsVisible="True">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                 x:Name="Subtrair_leitura"
+                 Text="Subtrair leitura"
+                 IconImageSource="menos.png"
+                 Clicked="Subtrair_leitura_Clicked"/>
+        <ToolbarItem 
+                 x:Name="Adicionar_Objeto"
+                 Text="Adicionar Objeto"
+                 IconImageSource="mais.png"
+                 Clicked="Adicionar_Objeto_Clicked"/>
+        <ToolbarItem 
+                 x:Name="Select"
+                 Text="Selecionar"
+                 IconImageSource="selecionado.png"
+                 Order="Primary"
+                 Priority="0"/>
+    </ContentPage.ToolbarItems>
+
+
+    <StackLayout Margin="20,0,20,20">
+        <ListView x:Name="ListArtigos" RowHeight="60" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                    <StackLayout Orientation="Horizontal" Padding="8,0,8,0">
+                            <Label Text="{Binding Referencia_Artigo}" 
+                                   TextColor="Black"                                                
+                                   FontSize="14" 
+                                   LineBreakMode="TailTruncation" 
+                                   VerticalOptions="CenterAndExpand"
+                                   VerticalTextAlignment="Center"/>
+                      <!--     <Label Text="{Binding QuantidadePicado}" HorizontalOptions="End" VerticalOptions="Center"/>
+                            <Label Text="/" HorizontalOptions="End" VerticalOptions="Center"/>-->
+                            <Label Text="{Binding QuantidadeQuantidadePicado}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="0"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    <!--   <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+            <Button Text="Adicionar Encomenda" 
+                BorderWidth="1" 
+                BackgroundColor="#E31E24" 
+                BorderRadius="35" 
+                TextColor="White" 
+                WidthRequest="100"
+                HeightRequest="70" 
+                Margin="0,0,20,22" 
+                Clicked="Button_Clicked"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand">
+            <Button Text="Adicionar aa" 
+                BorderWidth="1" 
+                BackgroundColor="#E31E24" 
+                BorderRadius="35" 
+                TextColor="White" 
+                WidthRequest="100"
+                HeightRequest="70" 
+                Margin="0,0,20,22" 
+                Clicked="Button_Clicked_1"/>
+        </StackLayout>-->
+    </StackLayout>
+    
+    
+</ContentPage>

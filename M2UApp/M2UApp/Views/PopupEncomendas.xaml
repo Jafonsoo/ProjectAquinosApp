@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"          
+             x:Class="M2UApp.Views.PopupEncomendas">
+    <StackLayout Margin="18"
+                 Padding="30"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 BackgroundColor="White" 
+                 HeightRequest="150"
+                 WidthRequest="300">
+        
+        <Label Text="Digitar código da encomenda" HorizontalOptions="Start"
+                 VerticalOptions="Start"/>
+        <StackLayout Orientation="Horizontal"> 
+            <Image Source="mais.png" Scale="0.4" HorizontalOptions="Start"/>
+            
+            <Entry x:Name="codigoEncomenda"
+                   HeightRequest="40"
+                   HorizontalOptions="FillAndExpand"
+                   PlaceholderColor="DarkGray"
+                   Keyboard="Numeric"/>
+
+        </StackLayout>
+
+        <Button x:Name= "adicionabtn" Text = "Adicionar conteúdo de um contentor " 
+                    HorizontalOptions = "FillAndExpand"
+                    Clicked="adicionabtn_Clicked"/>
+
+    </StackLayout>
+</pages:PopupPage>

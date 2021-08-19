@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.M2UFlyoutHeader"
+             HeightRequest="200">
+    <Grid BackgroundColor="White">
+        <Image Source="trolley.png" 
+               Aspect="AspectFill" />
+        <Label Text="Logistics" 
+               TextColor="Black" 
+               FontAttributes="Bold" 
+               HorizontalTextAlignment="Start"
+               VerticalTextAlignment="End" />
+    </Grid>
+</ContentView>

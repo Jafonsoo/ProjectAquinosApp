@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.AdicionarExecCarga">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout Orientation="Horizontal" >
+                <Image Source="casa.png" />
+                <Label                 
+                Text="Armazém origem"
+                HorizontalTextAlignment="Center"
+                    FontSize="16"
+                VerticalOptions="Start" 
+                    Padding="8"
+                HorizontalOptions="Start" />
+            </StackLayout>
+
+            <Label x:Name="NomeArmazem" 
+                   Text="NomeArmazem"
+                   TranslationX="60"
+                   FontSize="18"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+
+            <StackLayout Orientation="Horizontal" >
+
+                <Label                 
+                Text="Cais #"
+                HorizontalTextAlignment="Center"
+                    FontSize="16"
+                VerticalOptions="Start" 
+                    Padding="8"
+                HorizontalOptions="Start" />
+
+                <StackLayout HorizontalOptions="EndAndExpand">
+                <Image Source="casa.png" 
+                       HorizontalOptions="EndAndExpand"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </StackLayout>
+
+          <Label    
+                x:Name="nomeCais"
+                Text=""
+                HorizontalTextAlignment="Center"
+                FontSize="16"
+                VerticalOptions="Start" 
+                Padding="8"
+                HorizontalOptions="Start"
+                /> 
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
