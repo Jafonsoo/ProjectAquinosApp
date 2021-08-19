@@ -7,10 +7,10 @@
                  HorizontalOptions="Center"
                  VerticalOptions="Center"
                  BackgroundColor="White" 
-                 HeightRequest="600"
+                 HeightRequest="400"
                  WidthRequest="300">
         
-        <Label Text="Lista de Artigos"
+        <Label Text="Atenção"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
@@ -21,28 +21,38 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                            <StackLayout Orientation="Horizontal" Padding="8,0,8,0">
                                 <Label Text="{Binding Referencia_Artigo}"
                                        TextColor="Black"                                               
                                        FontSize="18" 
-                                       LineBreakMode="TailTruncation" 
-                                       HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="TailTruncation"
                                        VerticalOptions="CenterAndExpand"
-                                       VerticalTextAlignment="Center"/>
-                                <Label Text="{Binding Quantidade}"
+                                       VerticalTextAlignment="Center"
+                                       />
+                                <Label Text="{Binding QuantidadeQuantidadePicado}"
                                        TextColor="LightGray"                                               
                                        FontSize="14" 
-                                       LineBreakMode="TailTruncation" 
-                                       HorizontalOptions="Center"
-                                       HorizontalTextAlignment="Center"
-                                       VerticalOptions="CenterAndExpand"
-                                       VerticalTextAlignment="Center"/>
+                                       LineBreakMode="TailTruncation"
+                                       HorizontalOptions="EndAndExpand" 
+                                       VerticalOptions="Center"/>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="0"/>
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="End">
+            <Button x:Name= "adicionabtn" Text = "OK" 
+                    TextColor="{StaticResource Secundary}"
+                    HorizontalOptions = "End"
+                    BackgroundColor="White"/>
+            <Button x:Name="cancelarbtn" Text="CANCELAR" 
+                    HorizontalOptions="End"
+                    TextColor="{StaticResource Secundary}"
+                    BackgroundColor="White"/>
         </StackLayout>
     </StackLayout>
 </pages:PopupPage>
