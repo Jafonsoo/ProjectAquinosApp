@@ -45,10 +45,15 @@ namespace M2UApp.Views
         private async void Adicionar_Objeto_Clicked(object sender, EventArgs e)
         {
             ZXingView zXingView = new ZXingView("Leia o código de barras do artigo a ADICIONAR", "O Código será lido automaticamente");
-            zXingView.BarcodeReaded += ZXingView_BarcodeReaded;
+            zXingView.BarcodeReaded += Adicionar_BarcodeReaded;
             await Navigation.PushModalAsync(zXingView);
         }
-
+        private async void Subtrair_leitura_Clicked(object sender, EventArgs e)
+        {
+            ZXingView zXingView = new ZXingView("Leia o código de barras do artigo a REMOVER", "O Código será lido automaticamente");
+            zXingView.BarcodeReaded += Remover_BarcodeReaded;
+            await Navigation.PushModalAsync(zXingView);
+        }
    /*    private async void Button_Clicked_1(object sender, EventArgs e)
         {
             ZXingView zXingView = new ZXingView("Leia o código de barras do artigo a ADICIONAR", "O Código será lido automaticamente");
@@ -91,15 +96,15 @@ namespace M2UApp.Views
         {
             nome_artigo = e;
             numero_encomenda = i;
-            if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 1 &&
-                artigos.Where(f => f.Referencia_Artigo.Contains(e)).Select(x => x.Quantidade > 0).FirstOrDefault())
+            if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 1)
             {
                 Artigo aa = artigos.FirstOrDefault(f => f.Id == artigos.Where(x => x.Referencia_Artigo.Contains(e)).Select(x => x.Id).FirstOrDefault());
-          //      Artigo aae = artigos.FirstOrDefault(f => f.Id == artigos.Where(x => x.Quantidade != x.QuantidadePicado).Select(x => x.Id).FirstOrDefault());
+                //      Artigo aae = artigos.FirstOrDefault(f => f.Id == artigos.Where(x => x.Quantidade != x.QuantidadePicado).Select(x => x.Id).FirstOrDefault());
+                Artigo xx = artigos.Where(x => x.Referencia_Artigo.Contains(e)).FirstOrDefault();
 
-                if (aa != null) 
+                if (xx != null) 
                 {
-                    aa.QuantidadePicado++;
+                    xx.QuantidadePicado++;
                 }
 
                 if(aa.Quantidade < aa.QuantidadePicado)
@@ -119,10 +124,48 @@ namespace M2UApp.Views
 
                     }
                 }
-            }else
+            } else if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 0)
             {
-            await Application.Current.MainPage.DisplayAlert("Erro", "Artigo não encontrado", "OK");
+             //   artigos = new List<Artigo>();
+                artigos.Add(new Artigo()
+                {
+                    Id = artigos.Count() + 1,
+                    Referencia_Artigo = e,
+                    Quantidade = 0,
+                    QuantidadePicado = 1
+                });
+
+                ListArtigos.ItemsSource = new List<Artigo>(artigos);
             }
+            else
+            {
+            await Application.Current.MainPage.DisplayAlert("Erro", "Erro Qr Code", "OK");
+            }
+        }
+
+        public async void RemoverCodigo(object sender, string e)
+        {
+            if(artigos.Where(x => x.Referencia_Artigo.Contains(e)).Count() == 1)
+            {
+
+                Artigo xx = artigos.Where(x => x.Referencia_Artigo.Contains(e)).FirstOrDefault();
+
+                if (xx != null && xx.QuantidadePicado > 1)
+                {
+                    xx.QuantidadePicado--;
+
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Quantidade " + e + " removida", "OK");
+                }
+                else if (xx.QuantidadePicado == 1 && xx.Quantidade == 0)
+                {
+                    artigos.Remove(xx);
+
+                    await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo " + e + " removido", "OK");
+                }
+
+                ListArtigos.ItemsSource = new List<Artigo>(artigos);
+            }
+
         }
 
         public void NumeroSerie(object sender, string e)
@@ -137,7 +180,7 @@ namespace M2UApp.Views
             
         } 
 
-        void ZXingView_BarcodeReaded(object sender, string e)
+        void Adicionar_BarcodeReaded(object sender, string e)
         {
             string[] delimiterChar = { "#", "" };
 
@@ -155,9 +198,16 @@ namespace M2UApp.Views
 
         }
 
-        private void Subtrair_leitura_Clicked(object sender, EventArgs e)
+        void Remover_BarcodeReaded(object sender, string e) 
         {
+            string[] delimiterChar = { "#", "" };
 
+            var splitArray = e.Split(delimiterChar, StringSplitOptions.RemoveEmptyEntries).ToList();
+            splitArray.RemoveAt(0);
+            string combindedString = string.Join("", splitArray);
+
+            RemoverCodigo(sender, combindedString);
         }
+
     }
 }
