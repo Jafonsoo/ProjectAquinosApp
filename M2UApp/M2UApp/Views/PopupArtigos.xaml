@@ -13,7 +13,16 @@
         <Label Text="Atenção"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
+        <Label x:Name="AAasdfghjk"
+            Text="Atenção"
+                IsVisible="false"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        <Label x:Name="BBasdfghjkl"
+                Text="Atenção"
+                IsVisible="false"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
 
         <StackLayout>
             <ListView x:Name="ListArtigos" RowHeight="60"
@@ -48,11 +57,13 @@
             <Button x:Name= "adicionabtn" Text = "OK" 
                     TextColor="{StaticResource Secundary}"
                     HorizontalOptions = "End"
-                    BackgroundColor="White"/>
+                    BackgroundColor="White"
+                    Clicked="adicionabtn_Clicked"/>
             <Button x:Name="cancelarbtn" Text="CANCELAR" 
                     HorizontalOptions="End"
                     TextColor="{StaticResource Secundary}"
-                    BackgroundColor="White"/>
+                    BackgroundColor="White"
+                    Clicked="cancelarbtn_Clicked"/>
         </StackLayout>
     </StackLayout>
 </pages:PopupPage>

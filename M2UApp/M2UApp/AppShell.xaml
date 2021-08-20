@@ -101,9 +101,8 @@
     <FlyoutItem Title="Scan TEST" Icon="mobile_phone.png">
         <ShellContent Route="TestQR" ContentTemplate="{DataTemplate local:TestQR}" />
     </FlyoutItem>
-    
+
     <FlyoutItem Title="Browse" Icon="icon_feed.png" >
-        <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem >
     
     <FlyoutItem Title="Expedição" Route="ExpedicaoPage" Icon="icon_about.png">

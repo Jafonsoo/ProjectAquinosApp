@@ -1,11 +1,11 @@
 ﻿using M2UApp.Models;
-using Newtonsoft.Json;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -34,7 +34,6 @@ namespace M2UApp.Views
 
         protected override void OnAppearing()
         {
-
             if(artigos == null) { 
             PopupEncomendas popupEncomendas = new PopupEncomendas();
             popupEncomendas.EncomendaReaded += List;
@@ -91,8 +90,8 @@ namespace M2UApp.Views
             if (responseMessage.IsSuccessStatusCode)
             {
                 string context = await responseMessage.Content.ReadAsStringAsync();
-                var artigo = JsonConvert.DeserializeObject<List<Artigo>>(context);
-                 
+                var artigo = JsonSerializer.Deserialize<List<Artigo>>(context);
+
                 artigos = new List<Artigo>(artigo);
             }
             return artigos;
@@ -108,14 +107,15 @@ namespace M2UApp.Views
             if (responseMessage.IsSuccessStatusCode)
             {
                 string context = await responseMessage.Content.ReadAsStringAsync();
-                var artigo = JsonConvert.DeserializeObject<List<Artigo>>(context);
+                var artigo = JsonSerializer.Deserialize<List<Artigo>>(context);
 
                 artigosOriginal = new List<Artigo>(artigo);
             }
             return artigosOriginal;
         }
 
-        public async void ReceberCodigo(object sender, string e)
+
+            public async void ReceberCodigo(object sender, string e)
         {
             nome_artigo = e;
             if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 1)
@@ -172,18 +172,23 @@ namespace M2UApp.Views
             //  List<Artigo> list3 = artigosOriginal.Where(x => x.Referencia_Artigo.Contains(artigos)).ToList();
             //   var list3 = artigos.Where(x => artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo)
             // && !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo));
-            IEnumerable<Artigo> list3 = artigos.Where(x => !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo));
+            IEnumerable<Artigo> list3 = artigos.Where(x => !artigosOriginal.Any(z => x.Id == z.Id 
+            && x.Referencia_Artigo == z.Referencia_Artigo 
+            && x.QuantidadePicado == z.Quantidade));
+
+            string aa= string.Concat(list3.Select(x=> x.Referencia_Artigo + "#" + x.QuantidadePicado + "#"));
+
 
         //    foreach (Artigo artigo in list3)
       //     && !artigosOriginal.Any(z => x.Id == z.Id && x.Referencia_Artigo == z.Referencia_Artigo)))
         //    {
                 //await Application.Current.MainPage.DisplayAlert("ole", "jasj" + artigo.Referencia_Artigo, "ok");
-            /*    PopupArtigos popup = new PopupArtigos();
-                popup.ListElementos(list3);
-                await Navigation.PushPopupAsync(popup);*/
+                PopupArtigos popup = new PopupArtigos();
+                popup.ListElementos(list3,aa,numero_encomenda);
+                await Navigation.PushPopupAsync(popup);
 
-                    string aa= string.Concat(list3.Select(x=> x.Referencia_Artigo + "#" + x.QuantidadePicado + "#"));
-            await Application.Current.MainPage.DisplayAlert("ole", "jasj" + aa, "ok");
+
+         //   await Application.Current.MainPage.DisplayAlert("ole", "jasj" + aa, "ok");
 
             //   }
 

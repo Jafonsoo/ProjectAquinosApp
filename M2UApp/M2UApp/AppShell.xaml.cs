@@ -27,9 +27,6 @@ namespace M2UApp
             Routing.RegisterRoute(nameof(TabbedExec), typeof(TabbedExec));
             Routing.RegisterRoute(nameof(ListArtigosPreparacao), typeof(ListArtigosPreparacao));
 
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
-
 
             
         }

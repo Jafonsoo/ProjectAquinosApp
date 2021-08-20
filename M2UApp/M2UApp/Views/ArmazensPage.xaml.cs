@@ -1,11 +1,11 @@
 ﻿using M2UApp.Models;
 using M2UApp.ViewModels;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -42,7 +42,7 @@ namespace M2UApp.Views
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var armazem = JsonConvert.DeserializeObject<List<Armazens>>(content);
+                var armazem = JsonSerializer.Deserialize<List<Armazens>>(content);
 
                 armazens = new List<Armazens>(armazem);
             }
@@ -110,9 +110,6 @@ namespace M2UApp.Views
 
 
             ListArmazens.ItemsSource = armazens.Where(f => f.NomeArmazem.ToLowerInvariant().Contains(newTextValue)).ToList();
-
-            
-
         }
     }
 }

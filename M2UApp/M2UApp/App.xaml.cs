@@ -1,4 +1,4 @@
-﻿using M2UApp.Services;
+﻿//using M2UApp.Services;
 using M2UApp.Views;
 using System;
 using Xamarin.Essentials;
@@ -14,7 +14,7 @@ namespace M2UApp
         {
             InitializeComponent();
             Connectivity.ConnectivityChanged += ConnectivityChanged;
-            DependencyService.Register<MockDataStore>();
+           // DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

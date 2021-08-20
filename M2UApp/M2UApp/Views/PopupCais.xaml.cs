@@ -1,5 +1,4 @@
 ﻿using M2UApp.Models;
-using Newtonsoft.Json;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -7,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -54,7 +54,7 @@ namespace M2UApp.Views
             if (responseMessage.IsSuccessStatusCode)
             {
                 string content = await responseMessage.Content.ReadAsStringAsync();
-                var Acais = JsonConvert.DeserializeObject<List<Cais>>(content);
+                var Acais = JsonSerializer.Deserialize<List<Cais>>(content);
 
                 cais = new List<Cais>(Acais);
             }
