@@ -1,13 +1,14 @@
-﻿using LiteDB;
-using M2UApp.ViewModel;
-using Rg.Plugins.Popup.Extensions;
+﻿using M2UApp.Models;
 using System;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LiteDB;
 
 namespace M2UApp.Views
 {
@@ -46,6 +47,8 @@ namespace M2UApp.Views
                   return sb.ToString();
               }
 
+
+
               public async Task RefreshDataAsync(string user, string pass)
               {
 
@@ -75,13 +78,14 @@ namespace M2UApp.Views
 
                 if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Password.Text))
                 {
-                    await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password", "OK");
+                    await App.Current.MainPage.DisplayAlert("Campos Vazios", "Introduza um Email e Password ", "OK");
 
 
                 }
                 else
                 {
-                    await RefreshDataAsync(Username.Text,Password.Text);
+                Application.Current.Properties["userLogin"] = Username.Text;
+                await RefreshDataAsync(Username.Text,Password.Text);
                 }
 
             

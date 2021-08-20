@@ -6,12 +6,12 @@ using Xamarin.Forms;
 
 namespace M2UApp.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class AboutViewModel 
     {
 
         public AboutViewModel()
         {
-            Title = "Página Inicial";
+           // Title = "Página Inicial";
             
 
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aquinosgroup.com/"));

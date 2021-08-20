@@ -1,5 +1,4 @@
-﻿using Plugin.Settings;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Text;
@@ -13,7 +12,7 @@ namespace M2UApp.Views
         public AboutPage()
         {
             InitializeComponent();
-            textLabel.Text = (string)Application.Current.Properties["ArmazemAtual"];
+            textLabel.Text = (string)Application.Current.Properties["userLogin"];
         }
 
 
