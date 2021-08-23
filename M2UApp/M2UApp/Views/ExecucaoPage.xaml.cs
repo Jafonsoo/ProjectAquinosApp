@@ -19,7 +19,7 @@ namespace M2UApp.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(TabbedExec));
+            await Shell.Current.GoToAsync(nameof(AdicionarExecCarga));
         }
     }
 }

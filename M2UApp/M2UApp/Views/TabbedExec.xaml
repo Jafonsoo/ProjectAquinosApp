@@ -15,24 +15,13 @@
 
     <TabbedPage.ToolbarItems>
 
-        <ToolbarItem 
-                 x:Name="Subtrair_leitura"
-                 Text="Subtrair leitura"
-                 IconImageSource="menos.png"
-                 Clicked="Subtrair_leitura_Clicked"
-            />
-
-        <ToolbarItem 
-                 x:Name="Adicionar_Objeto"
-                 Text="Adicionar Objeto"
-                 IconImageSource="mais.png"
-                 Clicked="Adicionar_Objeto_Clicked" />
 
         <ToolbarItem 
                  x:Name="Estado_tarefa"
-                 Text="Estado tarefa"
-                 IconImageSource="bandeira.png"
+                 Text="Adicionar Craga"
+                 IconImageSource="mais.png"
                  Order="Primary"
+                 Clicked="Estado_tarefa_Clicked"
             />
 
     </TabbedPage.ToolbarItems>
@@ -40,8 +29,7 @@
     <TabbedPage.Children>
 
         <views:AdicionarExecCarga Title="Home Carga" IconImageSource="casa.png" />
-        <views:AboutPage Title="Lista Carga" IconImageSource="lista.png"/>
-        
+
     </TabbedPage.Children>
 
 </TabbedPage>

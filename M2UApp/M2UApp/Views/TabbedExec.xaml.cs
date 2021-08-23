@@ -13,28 +13,31 @@ namespace M2UApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabbedExec : TabbedPage
     {
+
+        public string valCais;
         public TabbedExec()
         {
             InitializeComponent();
 
         }
 
-        private async void Subtrair_leitura_Clicked(object sender, EventArgs e)
+        private async void Estado_tarefa_Clicked(object sender, EventArgs e)
         {
-            ZXingView zXingView = new ZXingView("Leia o código de barras do artigo a remover", "O Código será lido automaticamente");
-            zXingView.BarcodeReaded += ZXingView_BarcodeReaded;
 
-            await Navigation.PushModalAsync(zXingView);
+            if(valCais != null)
+            {
+                await Shell.Current.GoToAsync(nameof(ListArtigosExecucao));
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Erro", "Nenhum Cais Selecionado", "OK");
+            }
         }
 
-        private async void Adicionar_Objeto_Clicked(object sender, EventArgs e)
+      /*  public void Cias(object sender, string e)
         {
-            await Navigation.PushPopupAsync(new PopupView());
-        }
+            valCais = e;
 
-        void ZXingView_BarcodeReaded(object sender, string e)
-        {
-            //  lblResultado.Text = "QRCODE: " + e;
-        }
+        }*/
     }
 }

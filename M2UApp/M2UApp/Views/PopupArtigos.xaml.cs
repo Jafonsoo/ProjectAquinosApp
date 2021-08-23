@@ -13,10 +13,10 @@ namespace M2UApp.Views
 {
     public partial class PopupArtigos : PopupPage
     {
-        string artigosDesp2;
+        List<Artigo> artigosPreparados;
         int Armazem_ID;
         string User_Username;
-        int num_encomenda;
+        string num_encomenda;
          
         public PopupArtigos()
         {
@@ -26,9 +26,9 @@ namespace M2UApp.Views
         } 
 
 
-        public void ListElementos(IEnumerable<Artigo> artigos, string artigosDesp, int encomenda)
+        public void ListElementos(IEnumerable<Artigo> artigos, List<Artigo> artigosPrep, string encomenda)
         {
-            artigosDesp2 = artigosDesp;
+            artigosPreparados = artigosPrep;
             num_encomenda = encomenda;
             User_Username = BBasdfghjkl.Text;
             Armazem_ID = int.Parse(AAasdfghjk.Text);
@@ -39,23 +39,39 @@ namespace M2UApp.Views
 
         private async void adicionabtn_Clicked(object sender, EventArgs e)
         {
+            bool action = await DisplayAlert("", "Pretende Guardar a Preparação de Carga?", "Sim", "Não");
+
+            if (action)
+            {
             await SaveArtigos();
+            await App.Current.MainPage.DisplayAlert("Sucesso", "Preparação de Carga Registada", "OK");
+            await PopupNavigation.Instance.PopAsync();
+            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            }
+            else {}
+
         }
 
         private async Task SaveArtigos()
         {
             try
             {
-                var artigosPre = new ArtigosPreparados
+                foreach(Artigo artigo in artigosPreparados) { 
+
+                var artigosPre = new ExpedicaoArtigo
                 {
-                    ArtigosDesproporcionais = artigosDesp2,
-                    Encomendas_ID = num_encomenda,
+                    Referencia_Artigo = artigo.Referencia_Artigo,
+                    Quantidade = artigo.Quantidade,
+                    QuantidadePicado = artigo.QuantidadePicado,
+                    NumeroEncomenda = num_encomenda,
                     Armazem_ID = Armazem_ID,
                     User_Username = User_Username
 
                 };
 
                 await AddArtigosPreparados(artigosPre);
+
+                }
             }
             catch(Exception ex)
             {
@@ -63,7 +79,7 @@ namespace M2UApp.Views
             }
         }
 
-        public async Task AddArtigosPreparados(ArtigosPreparados preparados)
+        public async Task AddArtigosPreparados(ExpedicaoArtigo preparados)
         {
             HttpClient client = new HttpClient();
 

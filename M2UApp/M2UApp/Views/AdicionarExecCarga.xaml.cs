@@ -13,17 +13,11 @@ namespace M2UApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AdicionarExecCarga : ContentPage
     {
-
-
+        string cais;
         public AdicionarExecCarga()
         {
             InitializeComponent();
             NomeArmazem.Text = (string)Application.Current.Properties["ArmazemAtual"];
-
-          //  MyString = Cais;
-
-
-
         }
 
 
@@ -32,13 +26,33 @@ namespace M2UApp.Views
             PopupCais popupCais = new PopupCais();
             popupCais.CaisReaded += CaisResult;
 
-
             await Navigation.PushPopupAsync(popupCais);
         }
 
-        void CaisResult(object sender, string e)
+        public void CaisResult(object sender, string e)
         {
             nomeCais.Text = e;
+            cais = e;
+        }
+
+        private async void Estado_tarefa_Clicked(object sender, EventArgs e)
+        {
+            if (cais == null)
+            {
+             await App.Current.MainPage.DisplayAlert("Erro", "Nenhum Cais Selecionado", "OK");
+            }
+            else {
+
+            bool action = await DisplayAlert("", "Deseja iniciar a picagem no " + cais+"?", "Sim", "Não");
+
+            if(action)
+            {
+              Application.Current.Properties["CaisAtual"] = cais;
+              await Shell.Current.GoToAsync(nameof(ListArtigosExecucao));
+            } 
+            else 
+            { }
+            }
         }
     }
 }

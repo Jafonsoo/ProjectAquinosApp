@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.ListArtigosExecucao"
+             Title="Execução de Carga"
+             Shell.NavBarIsVisible="True">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                 x:Name="Subtrair_leitura"
+                 Text="Subtrair leitura"
+                 IconImageSource="menos.png"
+                 Clicked="Subtrair_leitura_Clicked"/>
+        <ToolbarItem 
+                 x:Name="Adicionar_Objeto"
+                 Text="Adicionar Objeto"
+                 IconImageSource="mais.png"
+                 Clicked="Adicionar_Objeto_Clicked"/>
+        <ToolbarItem 
+                 x:Name="Select"
+                 Text="Enviar Carga"
+                 IconImageSource="selecionado.png"
+                 Order="Primary"
+                 Priority="0"
+                 Clicked="Select_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Margin="20,0,20,20">
+        <ListView x:Name="ListArtigos" RowHeight="60" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="8,0,8,0">
+                            <Label Text="{Binding Referencia_Artigo}" 
+                                   TextColor="Black"                                                
+                                   FontSize="14" 
+                                   LineBreakMode="TailTruncation" 
+                                   VerticalOptions="CenterAndExpand"
+                                   VerticalTextAlignment="Center"/>
+
+                            <Label Text="{Binding QuantidadeQuantidadePicado}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="0"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
