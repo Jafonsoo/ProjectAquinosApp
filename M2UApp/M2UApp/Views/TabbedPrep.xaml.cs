@@ -21,7 +21,7 @@ namespace M2UApp.Views
             InitializeComponent();
         }
 
-        private async void Adicionar_Objeto_Clicked(object sender, EventArgs e)
+    /*    private async void Adicionar_Objeto_Clicked(object sender, EventArgs e)
         {
 
             ZXingView zXingView = new ZXingView("Leia o código de barras do artigo a ADICIONAR", "O Código será lido automaticamente");
@@ -48,7 +48,7 @@ namespace M2UApp.Views
 
             ListArtigosPreparacao listArtigos = new ListArtigosPreparacao();
             listArtigos.ReceberCodigo(sender,combindedString);
-        }
+        }*/
 
         private async void Estado_tarefa_Clicked(object sender, EventArgs e)
         {

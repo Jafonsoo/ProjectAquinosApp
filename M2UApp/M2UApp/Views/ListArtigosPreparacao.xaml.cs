@@ -18,18 +18,13 @@ namespace M2UApp.Views
     {
         public List<Artigo> artigos;
         public List<Artigo> artigosOriginal;
-        public int numero_encomenda;
+        public string numero_encomenda;
         public Artigo artigo;
         public string nome_artigo;
 
         public ListArtigosPreparacao()
         {
             InitializeComponent();
-        }
-
-        public List<Artigo> GetArtigos()
-        { 
-            return artigos; 
         }
 
         protected override void OnAppearing()
@@ -74,13 +69,13 @@ namespace M2UApp.Views
             EnviarArtigos(sender, artigos);
         }
 
-        private async void List(object sender, int e)
+        private async void List(object sender, string e)
         {
             numero_encomenda = e;
             ListArtigos.ItemsSource = await RefreshDataAsync(e);
         }
 
-        public async Task<List<Artigo>> RefreshDataAsync(int numero_encomenda)
+        public async Task<List<Artigo>> RefreshDataAsync(string numero_encomenda)
         {
             artigos = new List<Artigo>();
             HttpClient client = new HttpClient();
@@ -97,7 +92,7 @@ namespace M2UApp.Views
             return artigos;
         }
          
-        public async Task<List<Artigo>> RefreshDataAsyncOriginal(int numero_encomenda)
+        public async Task<List<Artigo>> RefreshDataAsyncOriginal(string numero_encomenda)
         {
             artigosOriginal = new List<Artigo>();
             HttpClient client = new HttpClient();
@@ -138,14 +133,6 @@ namespace M2UApp.Views
 
                 await Application.Current.MainPage.DisplayAlert("Sucesso", "Artigo "  + nome_artigo + " adicionado" , "OK");
                 
-                if(artigos.Sum(x => x.QuantidadePicado) == 4)
-                {
-                    foreach(Artigo artigo in artigos)
-                    {
-                    await Application.Current.MainPage.DisplayAlert("Erro", "ENVIAR "+ artigo.QuantidadePicado , "OK");
-
-                    }
-                }
             } else if (artigos.Where(f => f.Referencia_Artigo.Contains(e)).Count() == 0)
             {
                 artigos.Add(new Artigo()
@@ -176,7 +163,7 @@ namespace M2UApp.Views
             && x.Referencia_Artigo == z.Referencia_Artigo 
             && x.QuantidadePicado == z.Quantidade));
 
-            string aa= string.Concat(list3.Select(x=> x.Referencia_Artigo + "#" + x.QuantidadePicado + "#"));
+        //    string aa= string.Concat(list3.Select(x=> x.Referencia_Artigo + "#" + x.QuantidadePicado + "#"));
 
 
         //    foreach (Artigo artigo in list3)
@@ -184,7 +171,7 @@ namespace M2UApp.Views
         //    {
                 //await Application.Current.MainPage.DisplayAlert("ole", "jasj" + artigo.Referencia_Artigo, "ok");
                 PopupArtigos popup = new PopupArtigos();
-                popup.ListElementos(list3,aa,numero_encomenda);
+                popup.ListElementos(list3,artigos,numero_encomenda);
                 await Navigation.PushPopupAsync(popup);
 
 

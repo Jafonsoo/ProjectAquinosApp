@@ -13,7 +13,7 @@ namespace M2UApp.Views
 {
     public partial class PopupEncomendas : PopupPage
     {
-    public event EventHandler<int> EncomendaReaded;
+    public event EventHandler<string> EncomendaReaded;
         public ListArtigosPreparacao artigosPreparacao;
 
         public PopupEncomendas()
@@ -23,7 +23,7 @@ namespace M2UApp.Views
 
         private async void adicionabtn_Clicked(object sender, EventArgs e)
         {
-            int value = int.Parse(codigoEncomenda.Text);
+            string value = codigoEncomenda.Text;
 
             EncomendaReaded?.Invoke(this, value);
             await PopupNavigation.Instance.PopAsync();
