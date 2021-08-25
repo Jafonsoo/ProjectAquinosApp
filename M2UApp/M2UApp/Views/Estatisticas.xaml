@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="M2UApp.Views.Estatisticas"
+             Title="Estatísticas">
+    <StackLayout Padding="20,20,0,0">
+
+        <Label FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" TextColor="{StaticResource Secundary}">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Relatório de dados "/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Text="Utilizador " FontSize="16" FontAttributes="Bold"  Padding="0,20,0,0" TextColor="{StaticResource Secundary}"/>
+        <Label x:Name="textUser" 
+                   Text="" 
+                   TextColor="Black"
+                   Margin="10"
+                       FontAttributes="Bold"/>
+
+        <Label Text="Armazem " FontSize="16" FontAttributes="Bold"  Padding="0,20,0,0" TextColor="{StaticResource Secundary}"/>
+        <Label x:Name="textoArmazem" 
+                   Text="" 
+                   TextColor="Black"
+                   Margin="10"
+                       FontAttributes="Bold"/>
+        
+        <Label FontSize="16"  Text="Total de Picagens" FontAttributes="Bold" Padding="0,20,0,0" TextColor="{StaticResource Secundary}"/>
+        <ListView x:Name="ListPicagens">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                            <Label Text="{Binding TotalArtigos}"
+                                        
+                                       Margin="10"
+                                       TextColor="Black"
+                                       FontAttributes="Bold" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="0"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+            <Label FontSize="16"  Text="Total de Picagens em 5 dias" FontAttributes="Bold" TranslationY="-100" TextColor="{StaticResource Secundary}"/>
+    <StackLayout>
+        <ListView x:Name="ListPicagensDias" TranslationY="-100">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Padding="8,0,8,0">
+                            <Label Text="{Binding DiasArtigos}"
+                                       Margin="10"
+                                       TextColor="Black"
+                                       FontAttributes="Bold" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="0"/>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+    </StackLayout>
+</ContentPage>

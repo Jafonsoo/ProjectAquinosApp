@@ -13,7 +13,7 @@
         <Button Grid.Row="0" 
                 Text="Adicionar Carga" 
                 BorderWidth="1" 
-                BackgroundColor="#E31E24" 
+                BackgroundColor="{StaticResource Secundary}" 
                 BorderRadius="35" 
                 TextColor="White" 
                 HorizontalOptions="End" 

@@ -13,7 +13,7 @@ namespace M2UApp.Views
 {
     public partial class PopupEncomendas : PopupPage
     {
-    public event EventHandler<string> EncomendaReaded;
+        public event EventHandler<string> EncomendaReaded;
         public ListArtigosPreparacao artigosPreparacao;
 
         public PopupEncomendas()

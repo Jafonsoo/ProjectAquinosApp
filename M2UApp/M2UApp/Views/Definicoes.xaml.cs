@@ -13,14 +13,16 @@ namespace M2UApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Definicoes : ContentPage
     {
-        DefinicoesViewModel definicoes;
 
 
         public Definicoes()
         {
             InitializeComponent();
-            definicoes = new DefinicoesViewModel("vfref");
-            BindingContext = definicoes;
+        }
+
+        private void updatebtn_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.DisplayAlert("Sucesso", "Password Alterada", "OK");
         }
     }
 }

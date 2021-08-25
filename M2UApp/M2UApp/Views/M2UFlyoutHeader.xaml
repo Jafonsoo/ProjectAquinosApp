@@ -8,6 +8,7 @@
                Aspect="AspectFill" />
         <Label Text="Logistics" 
                TextColor="Black" 
+               Margin="10"
                FontAttributes="Bold" 
                HorizontalTextAlignment="Start"
                VerticalTextAlignment="End" />

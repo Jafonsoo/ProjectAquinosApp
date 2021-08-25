@@ -14,7 +14,6 @@
             />
     </ContentPage.ToolbarItems>
     
-    
     <ContentPage.Content>
         <StackLayout Padding="10">
             <StackLayout Orientation="Horizontal" >
@@ -36,7 +35,6 @@
                    FontAttributes="Bold"/>
 
             <StackLayout Orientation="Horizontal" >
-
                 <Label                 
                 Text="Cais #"
                 HorizontalTextAlignment="Center"
@@ -57,13 +55,11 @@
           <Label    
                 x:Name="nomeCais"
                 Text=""
-                HorizontalTextAlignment="Center"
-                FontSize="16"
-                VerticalOptions="Start" 
-                Padding="8"
-                HorizontalOptions="Start"
+                TranslationX="60"
+                FontSize="18"
+                TextColor="Black"
+                FontAttributes="Bold"
                 /> 
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

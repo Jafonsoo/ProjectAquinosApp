@@ -43,7 +43,7 @@ namespace M2UApp.Views
             }
             else {
 
-            bool action = await DisplayAlert("", "Deseja iniciar a picagem no " + cais+"?", "Sim", "Não");
+            bool action = await DisplayAlert("", "Deseja iniciar a picagem no " + cais +"?", "Sim", "Não");
 
             if(action)
             {
