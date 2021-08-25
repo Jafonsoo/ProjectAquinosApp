@@ -7,7 +7,7 @@
 
     <ScrollView >
         <StackLayout Padding="40" VerticalOptions="StartAndExpand" AnchorY="60">
-            <Frame OutlineColor="#E31E24"
+            <Frame OutlineColor="{StaticResource Secundary}"
                                Padding="40" >
                     <StackLayout Orientation="Horizontal" Spacing="30" >
                         <Image Source="transport.png"
@@ -24,7 +24,7 @@
                     </StackLayout>
                 </Frame>
                 <StackLayout TranslationY="40">
-                <Frame OutlineColor="#E31E24"
+                <Frame OutlineColor="{StaticResource Secundary}"
                                Padding="40" >
                     <StackLayout Orientation="Horizontal" Spacing="30">
                         <Image Source="truck.png"

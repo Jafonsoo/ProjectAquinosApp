@@ -86,35 +86,32 @@
         <ShellContent ContentTemplate="{DataTemplate local:LoadingPage}" />
     </ShellItem>-->
 
-    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+    <FlyoutItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
-    </ShellItem>
+    </FlyoutItem>
 
     <FlyoutItem Route="ArmazensPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:ArmazensPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Página Inicial" Icon="icon_about.png" >
+    <FlyoutItem Title="Página Inicial" Icon="casa.png" >
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
     
-    <FlyoutItem Title="Scan TEST" Icon="mobile_phone.png">
-        <ShellContent Route="TestQR" ContentTemplate="{DataTemplate local:TestQR}" />
-    </FlyoutItem>
 
     <FlyoutItem Title="Browse" Icon="icon_feed.png" >
     </FlyoutItem >
     
-    <FlyoutItem Title="Expedição" Route="ExpedicaoPage" Icon="icon_about.png">
+    <FlyoutItem Title="Expedição" Route="ExpedicaoPage" Icon="cami.png">
         <ShellContent ContentTemplate="{DataTemplate local:ExpedicaoPage}"  />
     </FlyoutItem>
 
-    <FlyoutItem Title="Internos" Route="InternosPage" Icon="icon_about.png">
-        <ShellContent ContentTemplate="{DataTemplate local:InternosPage}"  />
+    <FlyoutItem Title="Estatísticas" Route="Estatisticas" Icon="estatisticas.png">
+        <ShellContent ContentTemplate="{DataTemplate local:Estatisticas}"  />
     </FlyoutItem>
 
-    <FlyoutItem Title="Definições">
-        <ShellContent Route="Definicoes" ContentTemplate="{DataTemplate local:Definicoes}" />
+    <FlyoutItem Title="Definições" Route="Definicoes" Icon="configuracoes.png">
+        <ShellContent  ContentTemplate="{DataTemplate local:Definicoes}" />
     </FlyoutItem>
 
     <MenuItem Text="Mudar Armazem" StyleClass="MenuItemLayoutStyle" Clicked="MenuItem_Clicked">

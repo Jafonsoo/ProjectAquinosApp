@@ -1,5 +1,4 @@
 ﻿
-using M2UApp.ViewModels;
 using M2UApp.Views;
 using System;
 using System.Collections.Generic;
@@ -15,12 +14,12 @@ namespace M2UApp
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(TestQR), typeof(TestQR));
             Routing.RegisterRoute(nameof(Definicoes), typeof(Definicoes));
             Routing.RegisterRoute(nameof(ExpedicaoPage), typeof(ExpedicaoPage));
             Routing.RegisterRoute(nameof(AboutPage), typeof(AboutPage));
             Routing.RegisterRoute(nameof(ArmazensPage), typeof(ArmazensPage));
             Routing.RegisterRoute(nameof(InternosPage), typeof(InternosPage));
+            Routing.RegisterRoute(nameof(Estatisticas), typeof(Estatisticas));
             Routing.RegisterRoute(nameof(PreparacaoPage), typeof(PreparacaoPage));
             Routing.RegisterRoute(nameof(ExecucaoPage), typeof(ExecucaoPage));
             Routing.RegisterRoute(nameof(TabbedPrep), typeof(TabbedPrep));
@@ -38,6 +37,7 @@ namespace M2UApp
 
             if (action)
             {
+                Application.Current.Properties["ArmazemAtual"] = null;
                 await Shell.Current.GoToAsync($"//LoginPage");
             }
             else { }
@@ -49,6 +49,7 @@ namespace M2UApp
 
             if (action)
             {
+                Application.Current.Properties.Remove("ArmazemAtual");
                 await Shell.Current.GoToAsync($"//ArmazensPage");
             }
             else { }

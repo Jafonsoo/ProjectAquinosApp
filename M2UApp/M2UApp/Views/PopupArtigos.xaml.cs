@@ -13,25 +13,25 @@ namespace M2UApp.Views
 {
     public partial class PopupArtigos : PopupPage
     {
-        List<Artigo> artigosPreparados;
-        int Armazem_ID;
-        string User_Username;
-        string num_encomenda;
+        private List<ArtigosTest> artigosPreparados;
+        private int Armazem_ID;
+        private string User_Username;
+        private string num_encomenda;
          
         public PopupArtigos()
         {
             InitializeComponent();
-            AAasdfghjk.Text = Application.Current.Properties["IdArmazem"].ToString();
-            BBasdfghjkl.Text = (string)Application.Current.Properties["userLogin"];
+            armazem_ID.Text = Application.Current.Properties["IdArmazem"].ToString();
+            user_Username.Text = (string)Application.Current.Properties["userLogin"];
         } 
 
 
-        public void ListElementos(IEnumerable<Artigo> artigos, List<Artigo> artigosPrep, string encomenda)
+        public void ListElementos(IEnumerable<Artigo> artigos, List<ArtigosTest> artigosPrep, string encomenda)
         {
             artigosPreparados = artigosPrep;
             num_encomenda = encomenda;
-            User_Username = BBasdfghjkl.Text;
-            Armazem_ID = int.Parse(AAasdfghjk.Text);
+            User_Username = user_Username.Text;
+            Armazem_ID = int.Parse(armazem_ID.Text);
 
             ListArtigos.ItemsSource = artigos;
 
@@ -39,16 +39,16 @@ namespace M2UApp.Views
 
         private async void adicionabtn_Clicked(object sender, EventArgs e)
         {
-            bool action = await DisplayAlert("", "Pretende Guardar a Preparação de Carga?", "Sim", "Não");
+            bool action = await DisplayAlert("", "Pretende enviar a Preparação de Carga?", "Sim", "Não");
 
             if (action)
             {
             await SaveArtigos();
-            await App.Current.MainPage.DisplayAlert("Sucesso", "Preparação de Carga Registada", "OK");
+            await App.Current.MainPage.DisplayAlert("Sucesso", "Preparação de Carga Enviada", "OK");
             await PopupNavigation.Instance.PopAsync();
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            await Shell.Current.GoToAsync("..");
             }
-            else {}
+            else { }
 
         }
 
@@ -56,13 +56,12 @@ namespace M2UApp.Views
         {
             try
             {
-                foreach(Artigo artigo in artigosPreparados) { 
+                foreach(ArtigosTest artigo in artigosPreparados) { 
 
                 var artigosPre = new ExpedicaoArtigo
                 {
                     Referencia_Artigo = artigo.Referencia_Artigo,
-                    Quantidade = artigo.Quantidade,
-                    QuantidadePicado = artigo.QuantidadePicado,
+                    NumeroSerie = artigo.NumeroSerie,
                     NumeroEncomenda = num_encomenda,
                     Armazem_ID = Armazem_ID,
                     User_Username = User_Username

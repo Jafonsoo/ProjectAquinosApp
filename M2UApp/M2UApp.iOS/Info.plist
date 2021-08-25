@@ -34,5 +34,10 @@
     <string>M2UApp</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+
+	<array>
+		<string>Baloo2-Bold.ttf</string>
+		<string>Baloo2-Medium.ttf</string>
+	</array>
 </dict>
 </plist>

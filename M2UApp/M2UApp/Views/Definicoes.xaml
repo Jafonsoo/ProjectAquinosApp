@@ -7,9 +7,9 @@
         <StackLayout>
             <Label Text="{Binding Email, StringFormat='Bem Vindo {0}'}" Margin="10"/>
             <Entry Text="{Binding Password}" IsPassword="True" Margin="5,5" Placeholder="Introduza uma nova Password"/>
-            <Button x:Name="updatebtn" Text="Alterar Password" Command="{Binding UpdateCommand}" />
-            <Button x:Name="deletebtn" Text="Apagar Conta" Command="{Binding DeleteCommand}"/>
-            <Button x:Name="logoutbtn" Text="Logout" Command="{Binding LogoutCommand}"/>
+            <Entry x:Name="cfmpasswordentery" Placeholder="Confirme a sua Password" Text="{Binding ConfirmPassword}" 
+                   IsPassword="True" />
+            <Button x:Name="updatebtn" Text="Alterar Password" Clicked="updatebtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

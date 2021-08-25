@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.SimpleAudioPlayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,8 @@ namespace M2UApp.Views
             {
 
                 // Para a analise
+
+
                 zxing.IsAnalyzing = false;
 
                 BarcodeReaded?.Invoke(this, result.Text);
@@ -118,6 +121,10 @@ namespace M2UApp.Views
 
         protected override void OnDisappearing()
         {
+            ISimpleAudioPlayer Player = CrossSimpleAudioPlayer.Current;
+            Player.Load("beep.mp3");
+            Player.Play();
+
             zxing.IsScanning = false;
 
             base.OnDisappearing();

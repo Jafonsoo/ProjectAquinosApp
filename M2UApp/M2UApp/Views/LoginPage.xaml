@@ -1,28 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             mc:Ignorable="d"
+             Title="Login"
              x:Class="M2UApp.Views.LoginPage"
              Shell.FlyoutBehavior="Disabled"
-             Shell.NavBarIsVisible="False">
-    
+             Shell.NavBarIsVisible="True">
+
     <ContentPage.Content>
-        <StackLayout Padding="20" VerticalOptions="Center">
-            <Entry x:Name = "Username" Placeholder = "Username"
+
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" >
+            <StackLayout Padding="30,60,30,60" VerticalOptions="Start" HorizontalOptions="Start">
+                <Image Source="aquinos_logo.png" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="64" />
+        </StackLayout>
+
+
+
+            <StackLayout VerticalOptions="Center" Padding="0,20,0,0">
+
+
+                <Entry x:Name = "Username" Placeholder = "Username"
                    PlaceholderColor="DarkGray"
                    Text="{Binding Username}"
                    HeightRequest = "40"
                    Keyboard = "Email"/>
-            <Entry x:Name = "Password" Placeholder = "Password"
+                <Entry x:Name = "Password" Placeholder = "Password"
                    PlaceholderColor="DarkGray"
                    Text="{Binding Password}"
                    HeightRequest = "40"
                    IsPassword = "True"/>
-            <Button x:Name= "loginbtn" Text = "Login " 
+                <Button x:Name= "loginbtn" Text = "Entrar " 
                     Clicked="loginbtn_Clicked"
                     HorizontalOptions = "FillAndExpand"/>
-        </StackLayout>
+            </StackLayout>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>
